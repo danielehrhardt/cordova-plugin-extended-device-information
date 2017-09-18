@@ -13,7 +13,7 @@ channel.waitForInitialization('onCordovaInfoReady');
 * phone, etc.
 * @constructor
 */
-function Device() {
+function ExtendedDevice() {
 this.memory = null;
 this.cpumhz = null;
 
@@ -42,9 +42,9 @@ channel.onCordovaReady.subscribe(function() {
 * @param {Function} successCallback The function to call when the heading data is available
 * @param {Function} errorCallback The function to call when there is an error getting the heading data. (OPTIONAL)
 */
-Device.prototype.getInfo = function(successCallback, errorCallback) {
-argscheck.checkArgs('fF', 'Device.getExtendedInfo', arguments);
-exec(successCallback, errorCallback, "Device", "getExtendedDeviceInfo", []);
+ExtendedDevice.prototype.getInfo = function(successCallback, errorCallback) {
+    argscheck.checkArgs('fF', 'Device.getExtendedInfo', arguments);
+    exec(successCallback, errorCallback, "Device", "getExtendedDeviceInfo", []);
 };
 
-module.exports = new Device();
+module.exports = new ExtendedDevice();
