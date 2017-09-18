@@ -50,6 +50,7 @@ public class ExtendedDevice extends CordovaPlugin {
             JSONObject r = new JSONObject();
             r.put("memory", this.getMemorySize());
             r.put("cpumhz", this.getCpuMhz());
+            
             callbackContext.success(r);
         }
         else {

@@ -24,6 +24,7 @@ function ExtendedDevice() {
             //ignoring info.cordova returning from native, we should use value from cordova.version defined in cordova.js
             //TODO: CB-5105 native implementations should not return info.cordova
             var buildLabel = cordova.version;
+            console.log('Device Data', info);
 
             me.memory = info.memory || 'unknown';
             me.cpumhz = info.cpumhz || 'unknown';

@@ -12,14 +12,14 @@
     <keywords>cordova,device</keywords>
 
     <js-module src="www/extended-device-information.js" name="device">
-        <clobbers target="extended-device-information" />
+        <clobbers target="cordova.plugins.extended-device-information" />
     </js-module>
 
     <!-- android -->
     <platform name="android">
         <config-file target="res/xml/config.xml" parent="/*">
             <feature name="ExtendedDevice" >
-                <param name="android-package" value="cordova.device.extended.information"/>
+                <param name="android-package" value="cordova.device.extended.information.ExtendedDevice"/>
             </feature>
         </config-file>
 
