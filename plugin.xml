@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+
+<plugin xmlns="http://apache.org/cordova/ns/plugins/1.0"
+    xmlns:rim="http://www.blackberry.com/ns/widgets"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    id="cordova-plugin-extended-device-information"
+    version="1.1.6">
+    <name>ExtendedDeviceInformation</name>
+    <description>Get Device Informations</description>
+    <license>Apache 2.0</license>
+    <keywords>cordova,device</keywords>
+
+    <js-module src="www/extended-device-information.js" name="device">
+        <clobbers target="extended-device-information" />
+    </js-module>
+
+    <!-- android -->
+    <platform name="android">
+        <config-file target="res/xml/config.xml" parent="/*">
+            <feature name="ExtendedDevice" >
+                <param name="android-package" value="cordova.device.extended.information"/>
+            </feature>
+        </config-file>
+
+        <source-file src="src/android/Device.java" target-dir="src/cordova/extended/information" />
+    </platform>
+
+
+
+</plugin>

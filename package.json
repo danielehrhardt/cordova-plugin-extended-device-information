@@ -1,0 +1,28 @@
+{
+  "cordova": {
+    "id": "cordova-plugin-extended-device-information",
+    "platforms": [
+      "android"
+    ]
+  },
+  "devDependencies": {
+    "jshint": "^2.6.0"
+  },
+  "directories": {},
+  "engines": {
+    "cordovaDependencies": {
+      "2.0.0": {
+        "cordova": ">100"
+      }
+    }
+  },
+  "name": "cordova-plugin-extended-device-information",
+  "optionalDependencies": {},
+  "readme": "ERROR: No README data found!",
+  "scripts": {
+    "jshint": "node node_modules/jshint/bin/jshint www && node node_modules/jshint/bin/jshint src && node node_modules/jshint/bin/jshint tests",
+    "test": "npm run jshint"
+  },
+  "types": "./types/index.d.ts",
+  "version": "1.1.9"
+}
