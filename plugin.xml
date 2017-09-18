@@ -23,7 +23,7 @@
             </feature>
         </config-file>
 
-        <source-file src="src/android/Device.java" target-dir="src/cordova/extended/information" />
+        <source-file src="src/android/ExtendedDevice.java" target-dir="src/cordova/extended/information" />
     </platform>
 
 
