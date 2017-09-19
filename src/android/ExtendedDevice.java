@@ -1,5 +1,6 @@
 package cordova.device.extended.information;
 
+import java.text.DecimalFormat;
 import java.util.TimeZone;
 import java.io.IOException;
 import java.io.RandomAccessFile;
@@ -63,7 +64,7 @@ public class ExtendedDevice extends CordovaPlugin {
     // LOCAL METHODS
     //--------------------------------------------------------------------------
 
-    public String getTotalRAM() {
+    public String getMemorySize() {
 
         String load = null;
         DecimalFormat twoDecimalForm = new DecimalFormat("#.##");
