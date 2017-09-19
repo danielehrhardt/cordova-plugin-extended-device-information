@@ -63,8 +63,8 @@ public class ExtendedDevice extends CordovaPlugin {
     // LOCAL METHODS
     //--------------------------------------------------------------------------
 
-    public String getMemorySize() {
-        String size = null;
+    public Number getMemorySize() {
+        Number size = null;
 
         final Pattern PATTERN = Pattern.compile("([a-zA-Z]+):\\s*(\\d+)");
 
@@ -74,7 +74,7 @@ public class ExtendedDevice extends CordovaPlugin {
             while ((line = reader.readLine()) != null) {
                 Matcher m = PATTERN.matcher(line);
                 if (m.find()) {
-                    size = Long.toString(Long.parseLong(m.group(2)) * 1024);
+                    size = Long.parseLong(m.group(2));
                 }
             }
             reader.close();
@@ -85,11 +85,11 @@ public class ExtendedDevice extends CordovaPlugin {
         return size;
     }
 
-    public String getCpuMhz() {
-        String cpuMaxFreq = "";
+    public Number getCpuMhz() {
+      Number cpuMaxFreq = null;
         try {
             RandomAccessFile reader = new RandomAccessFile("/sys/devices/system/cpu/cpu0/cpufreq/cpuinfo_max_freq", "r");
-            cpuMaxFreq = reader.readLine();
+            cpuMaxFreq = Long.parseLong(reader.readLine());
             reader.close();
         } catch (IOException e) {
             e.printStackTrace();

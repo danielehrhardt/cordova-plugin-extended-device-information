@@ -4,9 +4,9 @@
  */
 interface ExtendedDeviceInformation {
     /** Get the device memory */
-    memory: string;
+    memory: number;
     /** Get the cpu size */
-    cpumhz:string;
+    cpumhz: number;
 
 }
 
