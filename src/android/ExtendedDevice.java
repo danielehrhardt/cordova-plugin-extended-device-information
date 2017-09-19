@@ -63,26 +63,36 @@ public class ExtendedDevice extends CordovaPlugin {
     // LOCAL METHODS
     //--------------------------------------------------------------------------
 
-    public Number getMemorySize() {
-        Number size = null;
+    public String getTotalRAM() {
 
-        final Pattern PATTERN = Pattern.compile("([a-zA-Z]+):\\s*(\\d+)");
-
-        String line;
+        String load = null;
+        DecimalFormat twoDecimalForm = new DecimalFormat("#.##");
+        double totRam = 0;
+        String lastValue = "";
         try {
             RandomAccessFile reader = new RandomAccessFile("/proc/meminfo", "r");
-            while ((line = reader.readLine()) != null) {
-                Matcher m = PATTERN.matcher(line);
-                if (m.find()) {
-                    size = Long.parseLong(m.group(2));
-                }
+            load = reader.readLine();
+
+            // Get the Number value from the string
+            Pattern p = Pattern.compile("(\\d+)");
+            Matcher m = p.matcher(load);
+            String value = "";
+            while (m.find()) {
+                value = m.group(1);
             }
             reader.close();
 
-        } catch (IOException e) {
-            e.printStackTrace();
+            totRam = Double.parseDouble(value);
+
+            double mb = totRam / 1024.0;
+            lastValue = twoDecimalForm.format(mb);
+
+
+
+        } catch (IOException ex) {
+            ex.printStackTrace();
         }
-        return size;
+        return lastValue;
     }
 
     public Number getCpuMhz() {
