@@ -3,10 +3,15 @@
  * Although the object is in the global scope, it is not available until after the deviceready event.
  */
 interface ExtendedDeviceInformation {
-    /** Get the device memory */
-    memory: number;
+    
     /** Get the cpu size */
     cpumhz: number;
+
+    /** Get the device memory */
+    memory: String;
+
+    /** Get the Total System Storage Size in MB */
+    totalstorage: string;
 
 }
 

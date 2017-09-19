@@ -28,6 +28,7 @@ function ExtendedDevice() {
 
             me.memory = info.memory || 'unknown';
             me.cpumhz = info.cpumhz || 'unknown';
+            me.totalstorage = info.totalstorage || 'unknown';
 
             channel.onCordovaInfoReady.fire();
         }, function (e) {

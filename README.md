@@ -15,4 +15,5 @@ description: Get device information.
 
 - device.memory
 - device.cpumhz
+- device.totalstorage
 

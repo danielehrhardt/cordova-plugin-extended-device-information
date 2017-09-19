@@ -1,12 +1,14 @@
 package cordova.device.extended.information;
 
+import android.os.Environment;
+import android.os.StatFs;
+
 import java.text.DecimalFormat;
 import java.util.TimeZone;
 import java.io.IOException;
 import java.io.RandomAccessFile;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-
 
 import org.apache.cordova.CordovaWebView;
 import org.apache.cordova.CallbackContext;
@@ -51,7 +53,7 @@ public class ExtendedDevice extends CordovaPlugin {
             JSONObject r = new JSONObject();
             r.put("memory", this.getMemorySize());
             r.put("cpumhz", this.getCpuMhz());
-            
+            r.put("totalstorage", this.getTotalSystemStorage());
             callbackContext.success(r);
         }
         else {
@@ -63,6 +65,12 @@ public class ExtendedDevice extends CordovaPlugin {
     //--------------------------------------------------------------------------
     // LOCAL METHODS
     //--------------------------------------------------------------------------
+
+    public String getTotalSystemStorage(){
+        StatFs stat = new StatFs(Environment.getExternalStorageDirectory().getPath());
+        long bytesAvailable = (long)stat.getBlockSize() * (long)stat.getBlockCount() / 1048576;
+        return Long.toString(bytesAvailable);
+    }
 
     public String getMemorySize() {
 
