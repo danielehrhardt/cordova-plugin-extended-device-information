@@ -16,6 +16,7 @@ channel.waitForInitialization('onCordovaInfoReady');
 function ExtendedDevice() {
     this.memory = null;
     this.cpumhz = null;
+    this.totalstorage = null;
 
     var me = this;
 
