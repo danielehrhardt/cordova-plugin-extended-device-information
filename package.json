@@ -9,13 +9,18 @@
     "jshint": "^2.6.0"
   },
   "directories": {},
-  "engines": {
-    "cordovaDependencies": {
-      "2.0.0": {
-        "cordova": ">100"
-      }
-    }
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/danielehrhardt/cordova-plugin-extended-device-information"
   },
+  "engines": [
+    {
+      "name": "cordova",
+      "version": ">=3.0.0"
+    }
+  ],
+  "author": "Daniel Ehrhardt",
+  "license": "MIT",
   "name": "cordova-plugin-extended-device-information",
   "optionalDependencies": {},
   "readme": "ERROR: No README data found!",
@@ -24,5 +29,5 @@
     "test": "npm run jshint"
   },
   "types": "./types/index.d.ts",
-  "version": "2.1.4"
+  "version": "2.1.5"
 }

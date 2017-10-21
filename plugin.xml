@@ -5,10 +5,10 @@
     xmlns:rim="http://www.blackberry.com/ns/widgets"
     xmlns:android="http://schemas.android.com/apk/res/android"
     id="cordova-plugin-extended-device-information"
-    version="2.1.4">
+    version="2.1.5">
     <name>ExtendedDeviceInformation</name>
     <description>Get Device Informations</description>
-    <license>Apache 2.0</license>
+    <license>MIT</license>
     <keywords>cordova,device</keywords>
 
     <js-module src="www/extended-device-information.js" name="device">
