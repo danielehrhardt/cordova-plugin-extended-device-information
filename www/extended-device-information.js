@@ -17,6 +17,7 @@ function ExtendedDevice() {
     this.memory = null;
     this.cpumhz = null;
     this.totalstorage = null;
+    this.freestorage = null;
 
     var me = this;
 
@@ -30,7 +31,8 @@ function ExtendedDevice() {
             me.memory = info.memory || 'unknown';
             me.cpumhz = info.cpumhz || 'unknown';
             me.totalstorage = info.totalstorage || 'unknown';
-
+            me.freestorage = info.freestorage || 'unknown';
+            
             channel.onCordovaInfoReady.fire();
         }, function (e) {
             me.available = false;

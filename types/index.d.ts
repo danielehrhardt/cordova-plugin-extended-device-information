@@ -8,10 +8,13 @@ interface ExtendedDeviceInformation {
     cpumhz: number;
 
     /** Get the device memory */
-    memory: String;
+    memory: string;
 
     /** Get the Total System Storage Size in MB */
     totalstorage: string;
+
+    /** Get the Free System Storage Size in MB */
+    freestorage: number;
 
 }
 

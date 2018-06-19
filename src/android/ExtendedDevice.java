@@ -3,6 +3,7 @@ package cordova.device.extended.information;
 import android.os.Environment;
 import android.os.StatFs;
 
+import java.io.File;
 import java.text.DecimalFormat;
 import java.util.TimeZone;
 import java.io.IOException;
@@ -54,6 +55,8 @@ public class ExtendedDevice extends CordovaPlugin {
             r.put("memory", this.getMemorySize());
             r.put("cpumhz", this.getCpuMhz());
             r.put("totalstorage", this.getTotalSystemStorage());
+            r.put("freestorage", this.getFreeSystemStorage());
+            
             callbackContext.success(r);
         }
         else {
@@ -70,6 +73,16 @@ public class ExtendedDevice extends CordovaPlugin {
         StatFs stat = new StatFs(Environment.getExternalStorageDirectory().getPath());
         long bytesAvailable = (long)stat.getBlockSize() * (long)stat.getBlockCount() / 1048576;
         return Long.toString(bytesAvailable);
+    }
+
+    public long getFreeSystemStorage(){
+      File path = Environment.getExternalStorageDirectory();
+      StatFs stat = new StatFs(path.getPath());
+      long availBlocks = stat.getAvailableBlocksLong();
+      long blockSize = stat.getBlockSizeLong();
+      long free_memory = availBlocks * blockSize / 1048576;
+
+      return free_memory;
     }
 
     public String getMemorySize() {
