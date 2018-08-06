@@ -11,13 +11,12 @@ description: Get device information.
 
     cordova plugin add cordova-plugin-extended-device-information
 
-## Use
-
-    cordova.plugins['extended-device-information'].totalstorage;
+    Browser Console
+    cordova.plugins['extended-device-information'].freestorage
 
 ## Properties
 
 - device.memory
 - device.cpumhz
 - device.totalstorage
-
+- device.freestorage

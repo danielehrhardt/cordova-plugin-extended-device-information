@@ -17,6 +17,7 @@ function ExtendedDevice() {
     this.memory = null;
     this.cpumhz = null;
     this.totalstorage = null;
+    this.freestorage = null;
 
     var me = this;
 
@@ -30,8 +31,9 @@ function ExtendedDevice() {
             me.memory = info.memory || 'unknown';
             me.cpumhz = info.cpumhz || 'unknown';
             me.totalstorage = info.totalstorage || 'unknown';
-
-            channel.onCordovaInfoReady.fire();
+            me.freestorage = info.freestorage || 'unknown';
+            
+            channel.onCordovaReady.fire();
         }, function (e) {
             me.available = false;
             utils.alert("[ERROR] Error initializing Cordova: " + e);
