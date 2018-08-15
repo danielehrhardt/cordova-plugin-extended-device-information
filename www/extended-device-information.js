@@ -4,9 +4,8 @@ var argscheck = require('cordova/argscheck'),
     exec = require('cordova/exec'),
     cordova = require('cordova');
 
-channel.createSticky('onCordovaInfoReady');
-// Tell cordova channel to wait on the CordovaInfoReady event
-channel.waitForInitialization('onCordovaInfoReady');
+channel.createSticky('onCordovaInformationReady');
+channel.waitForInitialization('onCordovaInformationReady');
 
 /**
  * This represents the mobile device, and provides properties for inspecting the model, version, UUID of the
@@ -21,23 +20,23 @@ function ExtendedDevice() {
 
     var me = this;
 
-    if(cordova.platformId === 'android') {
+    
         channel.onCordovaReady.subscribe(function () {
-            me.getInfo(function (info) {
-                console.log('Device Data', info);
-
-                me.memory = info.memory || 'unknown';
-                me.cpumhz = info.cpumhz || 'unknown';
-                me.totalstorage = info.totalstorage || 'unknown';
-                me.freestorage = info.freestorage || 'unknown';
-                
-                channel.onCordovaReady.fire();
-            }, function (e) {
-                me.available = false;
-                utils.alert("[ERROR] Error initializing Cordova: " + e);
-            });
+            if(cordova.platformId === 'android') {
+                self.getRAMSize(function(info){
+                    self.memory = info.memory || 'unknown';
+                    self.cpumhz = info.cpumhz || 'unknown';
+                    self.totalstorage = info.totalstorage || 'unknown';
+                    self.freestorage = info.freestorage || 'unknown';
+                    channel.onCordovaInformationReady.fire();
+                }, function(e){
+                    utils.alert('[ERROR] Error initializing Cordova: ' + e);
+                });
+            } else {
+                channel.onCordovaInformationReady.fire();
+            }
         });
-    }
+    
 }
 
 /**

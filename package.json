@@ -29,5 +29,5 @@
     "test": "npm run jshint"
   },
   "types": "./types/index.d.ts",
-  "version": "2.1.8"
+  "version": "2.1.9"
 }
