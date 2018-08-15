@@ -19,23 +19,23 @@ function ExtendedDevice() {
     this.freestorage = null;
 
     var me = this;
-
     
-        channel.onCordovaReady.subscribe(function () {
-            if(cordova.platformId === 'android') {
-                self.getRAMSize(function(info){
-                    self.memory = info.memory || 'unknown';
-                    self.cpumhz = info.cpumhz || 'unknown';
-                    self.totalstorage = info.totalstorage || 'unknown';
-                    self.freestorage = info.freestorage || 'unknown';
-                    channel.onCordovaInformationReady.fire();
-                }, function(e){
-                    utils.alert('[ERROR] Error initializing Cordova: ' + e);
-                });
-            } else {
+    channel.onCordovaReady.subscribe(function () {
+        if(cordova.platformId === 'android') {
+            me.getInfo(function(info){
+                console.log('Device Data', info);
+                me.memory = info.memory || 'unknown';
+                me.cpumhz = info.cpumhz || 'unknown';
+                me.totalstorage = info.totalstorage || 'unknown';
+                me.freestorage = info.freestorage || 'unknown';
                 channel.onCordovaInformationReady.fire();
-            }
-        });
+            }, function(e){
+                utils.alert('[ERROR] Error initializing Cordova: ' + e);
+            });
+        } else {
+            channel.onCordovaInformationReady.fire();
+        }
+    });
     
 }
 
